@@ -1,0 +1,126 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at top, #2d8f4d, #1b5e31 55%);
+  color: #fff;
+}
+
+.game {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.toolbar h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.actions {
+  text-align: right;
+}
+
+#new-game-btn {
+  background: #0f3d22;
+  color: #fff;
+  border: 1px solid #dff4e5;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+#new-game-btn:hover {
+  background: #15522f;
+}
+
+#status-text {
+  margin: 8px 0 0;
+  font-size: 0.95rem;
+}
+
+.top-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.deck-area,
+.foundations {
+  display: flex;
+  gap: 14px;
+}
+
+.tableau {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.pile {
+  width: 105px;
+  min-height: 142px;
+  border: 2px dashed rgba(255, 255, 255, 0.45);
+  border-radius: 10px;
+  position: relative;
+}
+
+.tableau-pile {
+  min-height: 470px;
+}
+
+.pile--highlight {
+  border-color: #ffe08a;
+  box-shadow: 0 0 8px rgba(255, 224, 138, 0.75);
+}
+
+.card {
+  width: 105px;
+  height: 142px;
+  border-radius: 10px;
+  border: 1px solid #111;
+  background: #fff;
+  color: #000;
+  position: absolute;
+  left: 0;
+  user-select: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 8px 10px;
+  font-size: 1rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.28);
+}
+
+.card.red {
+  color: #c91a1a;
+}
+
+.card.face-down {
+  background: linear-gradient(135deg, #2452aa, #12336f);
+  border-color: #071529;
+  color: transparent;
+  cursor: default;
+}
+
+.card .bottom {
+  align-self: flex-end;
+  transform: rotate(180deg);
+}
+
+.tableau-card {
+  position: absolute;
+}

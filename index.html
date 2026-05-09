@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solitaire</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="game">
+      <header class="toolbar">
+        <h1>Solitaire</h1>
+        <div class="actions">
+          <button id="new-game-btn" type="button">New Game</button>
+          <p id="status-text">Build all foundations from Ace to King.</p>
+        </div>
+      </header>
+
+      <section class="top-row">
+        <div class="deck-area">
+          <div id="stock-pile" class="pile pile--stock" aria-label="Stock"></div>
+          <div id="waste-pile" class="pile pile--waste" aria-label="Waste"></div>
+        </div>
+        <div id="foundations" class="foundations" aria-label="Foundations"></div>
+      </section>
+
+      <section id="tableau" class="tableau" aria-label="Tableau"></section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
