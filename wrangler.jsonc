@@ -10,5 +10,11 @@
   },
   "compatibility_flags": [
     "nodejs_compat"
+  ],
+  "routes": [
+    {
+      "pattern": "solitaire.northcomputing.com",
+      "custom_domain": true
+    }
   ]
 }
