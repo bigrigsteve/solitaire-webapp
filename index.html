@@ -2,17 +2,28 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <title>Solitaire</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <main class="game">
+    <main class="game" id="game">
       <header class="toolbar">
-        <h1>Solitaire</h1>
-        <div class="actions">
-          <button id="new-game-btn" type="button">New Game</button>
-          <p id="status-text">Build all foundations from Ace to King.</p>
+        <h1 class="toolbar__title">Solitaire</h1>
+        <div class="toolbar__stats">
+          <span class="stat"><span id="stat-time">0:00</span></span>
+          <span class="stat"><span id="stat-moves">0</span> moves</span>
+        </div>
+        <div class="toolbar__actions">
+          <button class="btn btn--icon" id="theme-btn" aria-label="Change theme" title="Change theme">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a7 7 0 0 1 7 7c0 4-3.5 6-7 10-3.5-4-7-6-7-10a7 7 0 0 1 7-7z"/></svg>
+          </button>
+          <button class="btn btn--icon" id="leaderboard-btn" aria-label="Leaderboard" title="Leaderboard">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="18" y="3" width="4" height="18"/><rect x="10" y="8" width="4" height="13"/><rect x="2" y="13" width="4" height="8"/></svg>
+          </button>
+          <button class="btn btn--primary" id="new-game-btn" type="button">New Game</button>
         </div>
       </header>
 
@@ -26,6 +37,65 @@
 
       <section id="tableau" class="tableau" aria-label="Tableau"></section>
     </main>
+
+    <!-- Theme Modal -->
+    <div class="modal-backdrop" id="theme-modal" hidden>
+      <div class="modal">
+        <div class="modal__header">
+          <h2>Card Theme</h2>
+          <button class="btn btn--icon modal__close" id="theme-close">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+        <div class="theme-grid" id="theme-grid"></div>
+      </div>
+    </div>
+
+    <!-- Leaderboard Modal -->
+    <div class="modal-backdrop" id="leaderboard-modal" hidden>
+      <div class="modal">
+        <div class="modal__header">
+          <h2>Leaderboard</h2>
+          <button class="btn btn--icon modal__close" id="leaderboard-close">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+        <div id="leaderboard-content" class="leaderboard"></div>
+        <button class="btn btn--danger" id="clear-scores-btn">Clear All Scores</button>
+      </div>
+    </div>
+
+    <!-- Win Modal -->
+    <div class="modal-backdrop" id="win-modal" hidden>
+      <div class="modal modal--celebration">
+        <div class="confetti-container" id="confetti-container"></div>
+        <div class="celebration__icon">🏆</div>
+        <h2 class="celebration__title">You Won!</h2>
+        <div class="celebration__stats">
+          <div class="cel-stat"><span class="cel-stat__label">Time</span><span class="cel-stat__value" id="win-time"></span></div>
+          <div class="cel-stat"><span class="cel-stat__label">Moves</span><span class="cel-stat__value" id="win-moves"></span></div>
+          <div class="cel-stat"><span class="cel-stat__label">Score</span><span class="cel-stat__value" id="win-score"></span></div>
+        </div>
+        <div class="modal__actions">
+          <button class="btn btn--primary btn--lg" id="win-new-game">Play Again</button>
+          <button class="btn btn--secondary btn--lg" id="win-leaderboard">View Scores</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lose Modal -->
+    <div class="modal-backdrop" id="lose-modal" hidden>
+      <div class="modal modal--lose">
+        <div class="celebration__icon">😔</div>
+        <h2 class="celebration__title">No More Moves</h2>
+        <p class="lose__message">The cards aren't in your favor this time. Try again?</p>
+        <div class="modal__actions">
+          <button class="btn btn--primary btn--lg" id="lose-new-game">New Game</button>
+        </div>
+      </div>
+    </div>
+
+    <canvas id="confetti-canvas"></canvas>
 
     <script src="./app.js"></script>
   </body>
